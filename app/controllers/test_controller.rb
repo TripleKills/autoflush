@@ -52,4 +52,10 @@ class TestController < ApplicationController
 		visited.save
 		visited.times
 	end
+
+
+
+	def visit_all
+		
+	end
 end
