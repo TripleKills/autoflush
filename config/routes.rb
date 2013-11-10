@@ -5,6 +5,10 @@ Autoflush::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
+  match 'visit'=>'test#visit', :via=>[:get,:post]
+  match 'visit2'=>'test#visit2', :via=>[:get,:post]
+  match 'visit3'=>'test#visit3', :via=>[:get,:post]
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
