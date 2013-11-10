@@ -18,6 +18,7 @@ class TestController < ApplicationController
 
 		@v2 = "test_visit2 " + visit2.to_s
 		@v3 = "test_visit3 " + visit3.to_s
+		@localhost = get_local_ip
 	end
 
 	def visit2()
@@ -38,4 +39,17 @@ class TestController < ApplicationController
 		visited.save
 		render :json => {'view'=>name, 'visited'=>visited.times}.to_json
 	end
+
+	require 'socket'  
+def get_local_ip    
+  orig, Socket.do_not_reverse_lookup = Socket.do_not_reverse_lookup, true    
+# turn off reverse DNS resolution temporarily    
+   
+  UDPSocket.open do |s|    
+    s.connect '64.233.187.99', 1  #google的ip  
+    s.addr.last    
+  end    
+ensure    
+  Socket.do_not_reverse_lookup = orig    
+end
 end
