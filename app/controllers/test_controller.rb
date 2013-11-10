@@ -2,7 +2,22 @@ class TestController < ApplicationController
 
 	def visit()
 		#g_visit("test_visit")
-		
+		visited2 = Visits.find_by_name("test_visit2")
+		if visited2.nil?
+			visit2 = 0
+		else
+			visit2 = visited2.times
+		end
+
+		visited3 = Visits.find_by_name("test_visit2")
+		if visited3.nil?
+			visit3 = 0
+		else
+			visit3 = visited3.times
+		end
+
+		@v2 = "test_visit2 " + visit2.to_s
+		@v3 = "test_visit3 " + visit3.to_s
 	end
 
 	def visit2()
