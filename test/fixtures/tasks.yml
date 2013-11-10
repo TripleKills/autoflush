@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  url_name: MyString
+  target: 1
+  current: 1
+  date: 2013-11-10
+  last_time: 2013-11-10
+
+two:
+  url_name: MyString
+  target: 1
+  current: 1
+  date: 2013-11-10
+  last_time: 2013-11-10
