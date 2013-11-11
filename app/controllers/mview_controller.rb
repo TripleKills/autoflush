@@ -54,12 +54,14 @@ class MviewController < ApplicationController
       		return  		
       	end
 
-      	params[:target] = 1000 unless !params[:target].nil?
+      	params[:target] = 1000 if params[:target].nil?
+            params[:current] = 0 if params[:current].nil?
 
       	date = DateTime.parse(Time.now.to_s).strftime('%Y-%m-%d')
       	Tasks.create(
       		:url_name=>params[:name],
       		:target=>params[:target],
+                  :current=>params[:current],
       		:date=>date
       		)
       	render :json => {'result_code'=>0, 'result_msg'=>'success'}.to_json

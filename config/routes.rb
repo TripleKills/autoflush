@@ -14,6 +14,8 @@ Autoflush::Application.routes.draw do
   match 'del'=>'mview#delurl', :via=>[:get,:post]
   match 'addtask'=>'mview#addtask', :via=>[:get,:post]
   match 'deltask'=>'mview#deltask', :via=>[:get,:post]
+  match 'visitx'=>'mvisit#visitx', :via=>[:get, :post]
+  match 'visitinner'=>'mvisit#visitinner', :via=>[:get, :post]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
