@@ -10,8 +10,10 @@
 <a href=<%=  @visit_inner %>>Visit_Inner</a>
 
 <% @s_urls.each do |url| %>
-<a href=<%= url %>url</a>
+<br>
+<a href=<%= url %>><%= url %></a>
 <% end %>
+
 <%= yield %>
 
 </body>
