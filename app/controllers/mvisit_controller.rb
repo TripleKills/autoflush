@@ -23,7 +23,7 @@ class MvisitController < ApplicationController
 		}
 
 		#render :json => {'url_names'=>url_names, 's_urls'=>s_urls}.to_json
-		@visit_inner = "http://127.0.0.1:3000/visitinner?tasks=" + url_names
+		@visit_inner = "http://115.47.43.59:3000/visitinner?tasks=" + url_names
 		@s_urls = s_urls
 	end
 
