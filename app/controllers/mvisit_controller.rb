@@ -1,7 +1,8 @@
 class MvisitController < ApplicationController
 
 	def visitx
-		tasks = Tasks.all
+		date = DateTime.parse(Time.now.to_s).strftime('%Y-%m-%d')
+		tasks = Tasks.find_all_by_date(date)
 		t_urls = {}
 		tasks.each do |task|
 			url_record = Urls.find_by_name(task.url_name)
@@ -11,7 +12,6 @@ class MvisitController < ApplicationController
 			end
 		end
 
-		s_urls = []
 		url_names = nil
 		t_urls.each {|k,v|
 			if url_names.nil?
@@ -19,12 +19,11 @@ class MvisitController < ApplicationController
 			else
 				url_names += ("-" + k)
 			end
-			s_urls.push(v)
 		}
-
+		@ip = get_local_ip
 		#render :json => {'url_names'=>url_names, 's_urls'=>s_urls}.to_json
 		@visit_inner = "http://115.47.43.59:3000/visitinner?tasks=" + url_names
-		@s_urls = s_urls
+		@t_urls = t_urls
 	end
 
 	def visitinner
@@ -83,4 +82,23 @@ class MvisitController < ApplicationController
 			task.save
 		end
 	end
+
+	###############  
+    # local_ip  
+    # This is to get around using ifconfig shell calls to get an ip address  
+    # Described here  
+    #http://coderrr.wordpress.com/2008/05/28/get-your-local-ip-address/  
+    ###############  
+    require 'socket'  
+    def get_local_ip    
+      orig, Socket.do_not_reverse_lookup = Socket.do_not_reverse_lookup, true    
+    # turn off reverse DNS resolution temporarily    
+       
+      UDPSocket.open do |s|    
+        s.connect '64.233.187.99', 1  #google的ip  
+        s.addr.last    
+      end    
+    ensure    
+      Socket.do_not_reverse_lookup = orig    
+    end    
 end

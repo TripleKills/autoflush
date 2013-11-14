@@ -1,8 +1,9 @@
 
 <a href=<%=  @visit_inner %>>Visit_Inner</a>
 
-<% @s_urls.each do |url| %>
+<% @t_urls.each do |name, url| %>
 <br>
-<a href=<%= url %>><%= url %></a>
+<a href=<%= url %>><%= name %></a>
+<%= @ip%>
 <% end %>
 

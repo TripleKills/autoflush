@@ -6,6 +6,8 @@ gem 'rails', '4.0.0'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 
+gem 'protected_attributes'
+
 gem 'activeadmin', :git => 'git://github.com/gregbell/active_admin.git', :branch => 'rails4'
 
 # Use SCSS for stylesheets
