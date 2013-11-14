@@ -20,7 +20,7 @@ class MvisitController < ApplicationController
 				url_names += ("-" + k)
 			end
 		}
-		@ip = get_local_ip
+		@ip = request.host_with_port
 		#render :json => {'url_names'=>url_names, 's_urls'=>s_urls}.to_json
 		@visit_inner = "http://115.47.43.59:3000/visitinner?tasks=" + url_names unless url_names.nil?
 		@t_urls = t_urls
